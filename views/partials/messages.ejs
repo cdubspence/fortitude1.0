@@ -3,3 +3,14 @@
 <p style="color: red"> <%= error.msg %></p>
 <%    })     %>
 <%  } %>
+
+<% if (success_msg != '') { %>
+<p style="color: rgb(55, 248, 55);"> <%=success_msg %></p>
+<% } %>
+
+<% if(error_msg != '') { %>
+    <%= error_msg %> 
+  <% } %> 
+  <% if(error != '') { %>
+    <%= error %>
+  <% } %>
