@@ -5,9 +5,13 @@ const mongoose = require('mongoose');
 const expressEjsLayout = require('express-ejs-layouts');
 const flash = require('connect-flash');
 const session = require('express-session');
+const passport = require('passport');
 
-//express
-mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true, useUnifiedTopology : true})
+require('./config/passport')(passport)
+//mongoose
+// pass SvQLYhn6QmwLJP95
+mongoose.connect('mongodb+srv://casey:SvQLYhn6QmwLJP95@cluster0.gbebh.mongodb.net/?retryWrites=true&w=majority',
+     {useNewUrlParser: true, useUnifiedTopology : true})
 .then(() => console.log('connected'))
 .catch((err) => console.log(err));
 
@@ -24,6 +28,8 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 //use flash
 app.use(flash());
